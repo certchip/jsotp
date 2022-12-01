@@ -3,7 +3,7 @@ This project is based on Gin's jsotp project 1.0.4 and is a modified version wit
 
 - Add Digits: 4, 6, 8, 10 ~
 - Add Digest : SHA-1, SHA-256, SHA-512
-- 
+
 
 # jsotp
 
