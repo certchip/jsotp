@@ -1,3 +1,10 @@
+# Source
+This project is based on Gin's jsotp project 1.0.4 and is a modified version with the following contents.
+
+- Add Digits: 4, 6, 8, 10 ~
+- Add Digest : SHA-1, SHA-256, SHA-512
+- 
+
 # jsotp
 
 `jsotp` is a node module to generate and verify one-time passwords that were used to implement 2FA and MFA authentication method in web applications and other login-required systems.
