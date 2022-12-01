@@ -1,14 +1,17 @@
-/*
- *  @project  : jsotp
- *  @author   : Gin (gin.lance.inside@hotmail.com)
- *  @link     : https://github.com/LanceGin/jsotp
- *  @Disc     : a node module to generate and verify one-time passwords
- */
+'use strict';
 
-import { TOTP } from './totp';
-import { HOTP } from './hotp';
-import { Base32 } from './base32';
-import { Util } from './util';
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Util = exports.Base32 = exports.TOTP = exports.HOTP = undefined;
+
+var _totp = require('./totp');
+
+var _hotp = require('./hotp');
+
+var _base = require('./base32');
+
+var _util = require('./util');
 
 /* ＊
  * Generate and return HOTP object
@@ -19,8 +22,18 @@ import { Util } from './util';
  *
  * @return {OTP}
  */
-function hotp_gen(secret, digits = 6, digest = 'SHA-1') {
-  const hotp = new HOTP(secret, digits, digest);
+/*
+ *  @project  : jsotp
+ *  @author   : Gin (gin.lance.inside@hotmail.com)
+ *  @link     : https://github.com/LanceGin/jsotp
+ *  @Disc     : a node module to generate and verify one-time passwords
+ */
+
+function hotp_gen(secret) {
+  var digits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  var digest = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'SHA-1';
+
+  var hotp = new _hotp.HOTP(secret, digits, digest);
   return hotp;
 }
 
@@ -38,14 +51,17 @@ function hotp_gen(secret, digits = 6, digest = 'SHA-1') {
  *
  * @return {OTP}
  */
-function totp_gen(secret, interval = 30) {
-  const totp = new TOTP(secret, interval);
+// edited by kgy 2021.05.01 with OTPKEY.COM
+function totp_gen(secret) {
+  var interval = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 30;
+  var digits = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 6;
+  var digest = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "SHA-1";
+
+  var totp = new _totp.TOTP(secret, interval, digits, digest);
   return totp;
 }
 
-export {
-  hotp_gen as HOTP,
-  totp_gen as TOTP,
-  Base32,
-  Util,
-};
+exports.HOTP = hotp_gen;
+exports.TOTP = totp_gen;
+exports.Base32 = _base.Base32;
+exports.Util = _util.Util;

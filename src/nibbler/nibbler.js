@@ -1,36 +1,42 @@
+'use strict';
+
 /*
 Adapted for Node.js by Matt Robenolt
 Reference: http://www.tumuski.com/2010/04/nibbler/
 */
 
-const Nibbler = function (options) {
-  let construct,
+var Nibbler = function Nibbler(options) {
+  var construct = void 0,
 
-    // options
-    pad,
-    dataBits,
-    codeBits,
-    keyString,
-    arrayData,
 
-    // private instance variables
-    mask,
-    group,
-    max,
+  // options
+  pad = void 0,
+      dataBits = void 0,
+      codeBits = void 0,
+      keyString = void 0,
+      arrayData = void 0,
 
-    // private methods
-    gcd,
-    translate,
 
-    // public methods
-    encode,
-    decode;
+  // private instance variables
+  mask = void 0,
+      group = void 0,
+      max = void 0,
 
-    // pseudo-constructor
-  construct = function () {
-    let i,
-      mag,
-      prev;
+
+  // private methods
+  gcd = void 0,
+      translate = void 0,
+
+
+  // public methods
+  encode = void 0,
+      decode = void 0;
+
+  // pseudo-constructor
+  construct = function construct() {
+    var i = void 0,
+        mag = void 0,
+        prev = void 0;
 
     // options
     pad = options.pad || '';
@@ -54,8 +60,8 @@ const Nibbler = function (options) {
   };
 
   // greatest common divisor
-  gcd = function (a, b) {
-    let t;
+  gcd = function gcd(a, b) {
+    var t = void 0;
     while (b !== 0) {
       t = b;
       b = a % b;
@@ -65,18 +71,18 @@ const Nibbler = function (options) {
   };
 
   // the re-coder
-  translate = function (input, bitsIn, bitsOut, decoding) {
-    let i,
-      len,
-      chr,
-      byteIn,
-      buffer,
-      size,
-      output,
-      write;
+  translate = function translate(input, bitsIn, bitsOut, decoding) {
+    var i = void 0,
+        len = void 0,
+        chr = void 0,
+        byteIn = void 0,
+        buffer = void 0,
+        size = void 0,
+        output = void 0,
+        write = void 0;
 
     // append a byte to the output
-    write = function (n) {
+    write = function write(n) {
       if (!decoding) {
         output.push(keyString.charAt(n));
       } else if (arrayData) {
@@ -103,7 +109,7 @@ const Nibbler = function (options) {
         if (chr === pad) {
           break;
         } else if (byteIn < 0) {
-          throw `the character "${chr}" is not a member of ${keyString}`;
+          throw 'the character "' + chr + '" is not a member of ' + keyString;
         }
       } else {
         if (arrayData) {
@@ -112,12 +118,12 @@ const Nibbler = function (options) {
           byteIn = input.charCodeAt(i);
         }
         if ((byteIn | max) !== max) {
-          throw `${byteIn} is outside the range 0-${max}`;
+          throw byteIn + ' is outside the range 0-' + max;
         }
       }
 
       // shift the buffer to the left and add the new bits
-      buffer = (buffer << bitsIn) | byteIn;
+      buffer = buffer << bitsIn | byteIn;
 
       // as long as there's enough in the buffer for another output...
       while (size >= bitsOut) {
@@ -138,7 +144,7 @@ const Nibbler = function (options) {
     // Otherwise, leave the extra bits off, 'cause they themselves are padding
     if (!decoding && size > 0) {
       // flush the buffer
-      write(buffer << (bitsOut - size));
+      write(buffer << bitsOut - size);
 
       // add padding keyString for the remainder of the group
       len = output.length % group;
@@ -148,20 +154,20 @@ const Nibbler = function (options) {
     }
 
     // string!
-    return (arrayData && decoding) ? output : output.join('');
+    return arrayData && decoding ? output : output.join('');
   };
 
   /**
      * Encode.  Input and output are strings.
      */
-  encode = function (input) {
+  encode = function encode(input) {
     return translate(input, dataBits, codeBits, false);
   };
 
   /**
      * Decode.  Input and output are strings.
      */
-  decode = function (input) {
+  decode = function decode(input) {
     return translate(input, codeBits, dataBits, true);
   };
 
@@ -170,17 +176,17 @@ const Nibbler = function (options) {
   construct();
 };
 
-const Base32 = new Nibbler({
+var Base32 = new Nibbler({
   dataBits: 8,
   codeBits: 5,
   keyString: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567',
-  pad: '=',
+  pad: '='
 });
-const Base64 = new Nibbler({
+var Base64 = new Nibbler({
   dataBits: 8,
   codeBits: 6,
   keyString: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
-  pad: '=',
+  pad: '='
 });
 
 exports.Nibbler = Nibbler;

@@ -1,3 +1,5 @@
+# Chinese article written by LanceGin
+
 # jsotp
 
 `jsotp`是一个用来生成用来生成及验证一次性密码的js模块，一次性密码通常用来在web应用或者其他登录系统中作为二步验证或多步验证使用。

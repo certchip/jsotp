@@ -1,7 +1,7 @@
 # Source
-This project is based on Gin's jsotp project 1.0.4 and is a modified version with the following contents.
+This project is based on LanceGin's jsotp project 1.0.4 and is a modified version with the following contents.
 
-- Add Digits: 4, 6, 8, 10 ~
+- Add Digits: 4, 5, 6, 7, 8, 9, 10 and more
 - Add Digest : SHA-1, SHA-256, SHA-512
 
 
@@ -86,7 +86,7 @@ const b32_secret = jsotp.Base32.random_gen();
 
 ### Api
 
-#### • [jsotp.Base32.random_gen(length)](https://github.com/LanceGin/jsotp/blob/master/src/base32.js#L32)
+#### • [jsotp.Base32.random_gen(length)](https://github.com/certchip/jsotp/blob/master/src/base32.js#L32)
 
 	param: length
 	type: int
@@ -94,47 +94,47 @@ const b32_secret = jsotp.Base32.random_gen();
 	return: String
 	desc: the length of random base32 encoded string.
 
-#### • [jsotp.TOTP(secret)](https://github.com/LanceGin/jsotp/blob/master/src/jsotp.js#L48)
+#### • [jsotp.TOTP(secret)](https://github.com/certchip/jsotp/blob/master/src/jsotp.js#L48)
 	
 	param: secret
 	type: string
 	return: TOTP
 	desc: generate TOTP instance.
 	
-#### • [jsotp.TOTP.now()](https://github.com/LanceGin/jsotp/blob/master/src/totp.js#L38)
+#### • [jsotp.TOTP.now()](https://github.com/certchip/jsotp/blob/master/src/totp.js#L38)
 	
 	return: String
 	desc: get the one-time password with current time.
 
-#### • [jsotp.TOTP.verify(totp)](https://github.com/LanceGin/jsotp/blob/master/src/totp.js#L70)
+#### • [jsotp.TOTP.verify(totp)](https://github.com/certchip/jsotp/blob/master/src/totp.js#L70)
 
 	param: totp
 	type: string
 	return: Boolean
 	desc: verify the totp code.
 	
-#### • [jsotp.TOTP.url_gen(issuer)](https://github.com/LanceGin/jsotp/blob/master/src/totp.js#L94)
+#### • [jsotp.TOTP.url_gen(issuer)](https://github.com/certchip/jsotp/blob/master/src/totp.js#L94)
 
 	param: issuer
 	type: string
 	return: string
 	desc: generate url with TOTP instance
 
-#### • [jsotp.HOTP(secret)](https://github.com/LanceGin/jsotp/blob/master/src/jsotp.js#L47)
+#### • [jsotp.HOTP(secret)](https://github.com/certchip/jsotp/blob/master/src/jsotp.js#L47)
 	
 	param: secret
 	type: string
 	return: HOTP
 	desc: generate HOTP instance.
 	
-#### • [jsotp.HOTP.at(counter)](https://github.com/LanceGin/jsotp/blob/master/src/hotp.js#L24)
+#### • [jsotp.HOTP.at(counter)](https://github.com/certchip/jsotp/blob/master/src/hotp.js#L24)
 
 	param: counter
 	type: int
 	return: String
 	desc: generate one-time password with counter.
 
-#### • [jsotp.HOTP.verify(hotp, count)](https://github.com/LanceGin/jsotp/blob/master/src/hotp.js#L50)
+#### • [jsotp.HOTP.verify(hotp, count)](https://github.com/certchip/jsotp/blob/master/src/hotp.js#L50)
 	
 	param: hotp
 	type: string
@@ -143,7 +143,7 @@ const b32_secret = jsotp.Base32.random_gen();
 	return: Boolean
 	desc: verify the hotp code.
 
-#### • [jsotp.HOTP.url_gen(issuer)](https://github.com/LanceGin/jsotp/blob/master/src/hotp.js#L69)
+#### • [jsotp.HOTP.url_gen(issuer)](https://github.com/certchip/jsotp/blob/master/src/hotp.js#L69)
 
 	param: issuer
 	type: string
@@ -155,7 +155,7 @@ const b32_secret = jsotp.Base32.random_gen();
 * Clone repo and install dependencies
 
 ```shell
-git clone git@github.com:LanceGin/jsotp.git
+git clone git@github.com:certchip/jsotp.git
 npm install
 ```
 
