@@ -1,10 +1,10 @@
 {
-  "name": "jsotp",
+  "name": "@certchip/jsotp",
   "version": "1.0.5",
   "description": "Javascript One-Time Password module.",
-  "main": "lib/jsotp.js",
+  "main": "src/jsotp.js",
   "directories": {
-    "doc": "docs",
+    "src": "src",
     "test": "tests"
   },
   "scripts": {
@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/certchip/jsotp/issues"
   },
-  "homepage": "https://github.com/certchip/jsotp#readme",
+  "homepage": "https://certchip.com",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.25.0",
