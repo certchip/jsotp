@@ -27,7 +27,7 @@ The module was implement based on [RFC4226](https://tools.ietf.org/html/rfc4226)
 ### Installation
 
 ```shell
-npm install jsotp
+npm install @certchip/jsotp
 ```
 	
 ### Module
@@ -35,7 +35,7 @@ npm install jsotp
 All modules support:
 
 ```javascript
-const jsotp = require('jsotp');
+const jsotp = require('@certchip/jsotp');
 ```
 	
 ### Usage
@@ -44,7 +44,7 @@ const jsotp = require('jsotp');
 
 ```javascript
 // import
-const jsotp = require('jsotp');
+const jsotp = require('@certchip/jsotp');
 
 // Create TOTP object
 const totp = jsotp.TOTP('BASE32ENCODEDSECRET');
@@ -61,7 +61,7 @@ totp.verify(432143); // => false
 
 ```javascript
 // import
-const jsotp = require('jsotp');
+const jsotp = require('@certchip/jsotp');
 
 // Create HOTP object
 const hotp = jsotp.HOTP('BASE32ENCODEDSECRET');
@@ -78,7 +78,7 @@ hotp.verify(242432, 2133); // => false
 
 ```javascript
 // import
-const jsotp = require('jsotp');
+const jsotp = require('@certchip/jsotp');
 
 // Generate
 const b32_secret = jsotp.Base32.random_gen();
@@ -170,6 +170,3 @@ npm run build
 ```shell
 npm test
 ```
-
-### [中文文档](docs/README_zh.md)
-
